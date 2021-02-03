@@ -9,8 +9,7 @@
 - We'll evaluate the exercise by looking commits and test passed.
 
 # Pre-requisites ✅
-- Add your Spotify client ID & secret to `config.js`
-  - Note. **Never add this type of config to version control. This would usually come from your build server.**
+- Don’t forget to add your spotify id and secret to config.js file in order to connect with Spotify API and remember to not upload this data to the repository
 
 # Requirements 📖
 - Fetch and display *Released This Week* songs
@@ -38,11 +37,11 @@
 ![screenshot-mobile](https://puu.sh/GwPLS/0bcb566d23.png)
 
 # Theoretical Part
-- ¿Qué es React JS?
-- ¿Por qué deberíamos utilizar ReactJS?
-- ¿Cuáles son las etapas de vida de un componente?
-- ¿Cómo utilizar ReactJS las "claves"?
-- ¿Existe alguna diferencia entre "componente contenedor" y "componente de presentación"?
-- ¿Para qué se utilizan los "eventos sintéticos"?
-- ¿Qué es una "función de flecha"?
-- ¿Qué es React Redux?
+- What is React JS?
+- Why should we use ReactJS?
+- What are the life stages of a component?
+- How does ReactJS use "keys"?
+- Is there a difference between "container component" and "presentation component"?
+- Why are "synthetic events" used?
+- What is an "arrow function"?
+- What is React Redux?
