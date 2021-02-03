@@ -36,3 +36,13 @@
 
 ![screenshot-desktop](https://puu.sh/GwPLE/3be580156a.png)
 ![screenshot-mobile](https://puu.sh/GwPLS/0bcb566d23.png)
+
+# Theoretical Part
+- ¿Qué es React JS?
+- ¿Por qué deberíamos utilizar ReactJS?
+- ¿Cuáles son las etapas de vida de un componente?
+- ¿Cómo utilizar ReactJS las "claves"?
+- ¿Existe alguna diferencia entre "componente contenedor" y "componente de presentación"?
+- ¿Para qué se utilizan los "eventos sintéticos"?
+- ¿Qué es una "función de flecha"?
+- ¿Qué es React Redux?
