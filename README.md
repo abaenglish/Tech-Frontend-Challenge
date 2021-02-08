@@ -29,7 +29,7 @@
 
 # What's Already Been Done 🏁
 - UI/UX for all elements, including previews (mobile responsive)
-- A Spotify request helper (`makeRequest.js`)
+- A Spotify request helper (`makeRequest.js` o other library https://developer.spotify.com/documentation/web-api/libraries/)
 
 # Screenshots 🌄
 
