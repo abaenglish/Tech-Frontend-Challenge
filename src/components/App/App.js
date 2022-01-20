@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 
 const App = () => {
     return (
-        <div>
+        <div id="app-container">
             <Navbar />
             <Header />
         </div>
