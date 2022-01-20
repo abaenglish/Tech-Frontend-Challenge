@@ -1,14 +1,83 @@
 header {
     width: 100%;
+    min-width: 300px;
     height: 15vh;
     background-color: $Pumpkin;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    img {
+        display: none;
+    }
 }
 
 h2 {
     position: relative;
     margin-top: -10px;
+}
+
+//DESKTOP
+
+@media only screen and ($Desktop) {
+    header {
+        height: 28vh;
+        justify-content: space-between;
+        overflow: hidden;
+
+        img {
+            display: inline-block;
+            width: 370px;
+            transform: scaleX(-1);
+            position: relative;
+            margin-left: -34px;
+        }
+    }
+
+    #header-text {
+        padding-right: 40px;
+        text-align: right;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+}
+
+@media only screen and (min-width: 1073px) {
+
+    header {
+        img {
+            width: 480px;
+        }
+    }
+
+    #header-text {
+        padding-right: 50px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 27px;
+    }
 }
