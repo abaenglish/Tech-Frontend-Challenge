@@ -9,20 +9,21 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
 
 const Navbar = () => {
-    const iconSize = { fontSize: 18 }
+    const iconSize = { fontSize: 18 };
 
     return (
         <nav>
             <div id='profile-picture'>
                 <img src={avatar} alt='Profile avatar' />
+                <p>Bob Smith</p>
             </div>
             <div id='nav-links'>
                 <ul>
-                    <li><HeadphonesIcon sx={iconSize} /></li>
-                    <li><SearchIcon sx={iconSize} /></li>
-                    <li><FavoriteIcon sx={iconSize} /></li>
-                    <li><PlayCircleIcon sx={iconSize} /></li>
-                    <li><PlaylistPlayIcon sx={iconSize} /></li>
+                    <li><HeadphonesIcon sx={iconSize} /><p>Discover</p></li>
+                    <li><SearchIcon sx={iconSize} /><p>Search</p></li>
+                    <li><FavoriteIcon sx={iconSize} /><p>Favourites</p></li>
+                    <li><PlayCircleIcon sx={iconSize} /><p>Playlists</p></li>
+                    <li><PlaylistPlayIcon sx={iconSize} /><p>Charts</p></li>
                 </ul>
             </div>
         </nav>
