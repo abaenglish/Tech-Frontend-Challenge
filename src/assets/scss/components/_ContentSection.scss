@@ -1,0 +1,35 @@
+#top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 20px 0 20px;
+    color: #CECFDC;
+
+    h3 {
+        margin: 0;
+        font-weight: 800;
+    }
+
+    hr {
+        flex: 1;
+        margin: 0 20px;
+        border-width: 0;
+        background-color: #CECFDC;
+        height: 1px;
+    }
+
+    #arrow-buttons {
+        width: 35px;
+        color: $DarkPlum;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        svg {
+            stroke: $DarkPlum;
+            stroke-width: 2;
+            width: 15px;
+            height: 15px;
+        }
+    }
+}
