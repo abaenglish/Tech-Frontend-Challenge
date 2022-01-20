@@ -1,6 +1,7 @@
 @import '~animate.css/animate.min.css';
-@import (css) url(https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700);
-@import './_vars';
+@import 'https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700)';
+@import './utilities/_vars';
+@import './components/_Navbar';
 
 * {
   box-sizing: border-box;
