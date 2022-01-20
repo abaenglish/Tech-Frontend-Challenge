@@ -1,5 +1,6 @@
 nav {
     width: 20%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     background-color: $DarkPlum;
@@ -7,14 +8,13 @@ nav {
 }
 
 #profile-picture {
-    flex: 0.2;
+    flex: 0.15;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px 0px;
     
     img {
-        width: 30%;
+        width: 28%;
     }
 }
 
