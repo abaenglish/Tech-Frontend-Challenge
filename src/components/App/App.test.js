@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import App from './App';
 import Navbar from '../Navbar/Navbar';
 import Header from '../Header/Header';
+import Content from '../Content/Content';
 
 describe('App', () => {
     
@@ -25,6 +26,12 @@ describe('App', () => {
         const header = wrapper.find(Header);
 
         expect(header).toHaveLength(1);
-    })
+    });
+
+    it('renders a content section', () => {
+        const content = wrapper.find(Content);
+
+        expect(content).toHaveLength(1);
+    });
 
 });
