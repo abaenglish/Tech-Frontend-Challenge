@@ -53,7 +53,7 @@ nav {
 @media only screen and ($Desktop) {
 
     #profile-picture {
-        flex: 0.25;
+        flex: 0.2;
         position: relative;
         padding-bottom: 15px;
 
@@ -67,7 +67,7 @@ nav {
     }
 
     #nav-links {
-        flex: 0.75;
+        flex: 0.8;
 
         p {
             display: inline-block;
