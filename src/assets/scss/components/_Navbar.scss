@@ -50,10 +50,12 @@ nav {
 
 // DESKTOP
 
-@media only screen and ($Laptop) {
+@media only screen and ($Desktop) {
 
     #profile-picture {
-        flex: 0.3;
+        flex: 0.25;
+        position: relative;
+        padding-bottom: 15px;
 
         img {
             width: 45px;
@@ -65,7 +67,7 @@ nav {
     }
 
     #nav-links {
-        flex: 0.7;
+        flex: 0.75;
 
         p {
             display: inline-block;
