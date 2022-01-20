@@ -1,6 +1,5 @@
 import React from 'react';
 import avatar from '../../assets/images/avatar.svg';
-import '../../assets/css/main.css';
 // MUI ICONS
 import HeadphonesIcon from '@mui/icons-material/Headphones';
 import SearchIcon from '@mui/icons-material/Search';
