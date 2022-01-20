@@ -7,8 +7,10 @@ const App = () => {
     return (
         <div id="app-container">
             <Navbar />
-            <Header />
-            <Content />
+            <div id='right-container'>
+                <Header />
+                <Content />
+            </div>
         </div>
     )
 };
