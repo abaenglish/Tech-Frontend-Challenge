@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Header from '../Header/Header';
 import Content from '../Content/Content';
 import Player from '../Player/Player';
+import Spotify from '../../util/Spotify';
 
 const App = () => {
+
+    useEffect(() => {
+        Spotify.getAccessToken();
+    }, []);
+
     return (
         <div id="app-container">
             <Navbar />
