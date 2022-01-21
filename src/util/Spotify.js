@@ -28,27 +28,9 @@ const Spotify = {
         const token = Spotify.getAccessToken();
 
         const response = await fetch('https://api.spotify.com/v1/browse/new-releases', {
-            Authorization: `Bearer ${token}`
-        });
-        const jsonResponse = await response.json();
-
-        if(!jsonResponse) {
-            return [];
-        }; 
-
-        return jsonResponse.albums.items.map((album) => {
-            return ({
-                name: album.name,
-                cover: album.images[0]
-            });
-        });
-    },
-
-    async getFeaturedPlaylists() {
-        const token = Spotify.getAccessToken();
-
-        const response = await fetch('https://api.spotify.com/v1/browse/featured-playlists', {
-            Authorization: `Bearer ${token}`
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
         });
         const jsonResponse = await response.json();
 
@@ -56,7 +38,27 @@ const Spotify = {
             return [];
         };
 
-        return jsonResponse.albums.items.map((playlist) => {
+        return jsonResponse.albums.items.map(album => ({
+                name: album.name,
+                cover: album.images[0] 
+            }));
+    },
+
+    async getFeaturedPlaylists() {
+        const token = Spotify.getAccessToken();
+
+        const response = await fetch('https://api.spotify.com/v1/browse/featured-playlists', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        const jsonResponse = await response.json();
+
+        if(!jsonResponse) {
+            return [];
+        };
+
+        return jsonResponse.playlists.items.map((playlist) => {
             return ({
                 name: playlist.name,
                 cover: playlist.images[0]
@@ -68,7 +70,9 @@ const Spotify = {
         let token = Spotify.getAccessToken();
 
         const response = await fetch('https://api.spotify.com/v1/browse/categories', {
-            Authorization: `Bearer ${token}`
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
         });
         const jsonResponse = await response.json();
 
