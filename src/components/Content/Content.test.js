@@ -17,6 +17,6 @@ describe('Content', () => {
     it('renders a content section', () => {
         const section = wrapper.find(ContentSection);
 
-        expect(section).toHaveLength(1);
+        expect(section).toHaveLength(3);
     });
 });

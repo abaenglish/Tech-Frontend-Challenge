@@ -27,7 +27,9 @@ describe('ContentSection', () => {
 
     it('renders a list of tracks', () => {
         const tracks = wrapper.find('.track');
+        const lastTrack = wrapper.find('.last-track');
 
-        expect(tracks).toHaveLength(13);
+        expect(tracks).toHaveLength(12);
+        expect(lastTrack).toHaveLength(1);
     })
 });

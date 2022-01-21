@@ -20,12 +20,21 @@ const ContentSection = (props) => {
 
       <div id='bottom-container'>
         {mockTracks.map((track) => {
+          if(mockTracks.indexOf(track) === mockTracks.length - 1) {
+            return (
+              <div className='last-track' key={track}>
+                <svg />
+                <p>Track {track}</p>
+              </div>
+            )
+          };
+
           return (
             <div className='track' key={track}>
               <svg />
               <p>Track {track}</p>
             </div>
-          )
+          );
         })}
       </div>
 
