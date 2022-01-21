@@ -4,15 +4,19 @@ import Header from '../Header/Header';
 import Content from '../Content/Content';
 import Player from '../Player/Player';
 import Spotify from '../../util/Spotify';
+import { addReleases, addPlaylists, addCategories } from '../Content/contentSlice';
+import { useDispatch } from 'react-redux';
 
 const App = () => {
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
         Spotify.getAccessToken();
-        Spotify.getNewReleases();
-        Spotify.getFeaturedPlaylists();
-        Spotify.getCategories();
-    }, []);
+        dispatch(addReleases());
+        dispatch(addPlaylists());
+        dispatch(addCategories());
+    });
 
     return (
         <div id="app-container">
