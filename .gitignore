@@ -9,6 +9,7 @@ public/frontend-react-components.css
 public/frontend-react-components.js
 .vscode
 .idea/
+config.js
 
 
 # Created by https://www.gitignore.io/api/vim,node,macos,intellij+all
