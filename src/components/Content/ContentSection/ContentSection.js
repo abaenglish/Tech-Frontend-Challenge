@@ -4,6 +4,8 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const ContentSection = (props) => {
 
+  const mockTracks = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13'];
+
   return (
     <section id='content-section-container'>
 
@@ -17,10 +19,14 @@ const ContentSection = (props) => {
       </div>
 
       <div id='bottom-container'>
-        <div className='track'>
-          <svg /> {/* MOCK TRACK */}
-          <p>Track 01</p>
-        </div>
+        {mockTracks.map((track) => {
+          return (
+            <div className='track' key={track}>
+              <svg />
+              <p>Track {track}</p>
+            </div>
+          )
+        })}
       </div>
 
     </section>

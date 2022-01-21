@@ -26,8 +26,8 @@ describe('ContentSection', () => {
     });
 
     it('renders a list of tracks', () => {
-        const tracks = wrapper.find('#track');
+        const tracks = wrapper.find('.track');
 
-        expect(tracks).toHaveLength(1);
+        expect(tracks).toHaveLength(13);
     })
 });
