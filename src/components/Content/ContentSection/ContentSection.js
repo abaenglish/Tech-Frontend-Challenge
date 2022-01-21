@@ -5,7 +5,8 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 const ContentSection = (props) => {
 
   return (
-    <section>
+    <section id='content-section-container'>
+
       <div id='top-container'>
         <h3>{props.title.toUpperCase()}</h3>
         <hr />
@@ -14,8 +15,14 @@ const ContentSection = (props) => {
           <svg><ArrowForwardIosIcon /></svg>
         </div>
       </div>
+
       <div id='bottom-container'>
+        <div className='track'>
+          <svg /> {/* MOCK TRACK */}
+          <p>Track 01</p>
+        </div>
       </div>
+
     </section>
   );
 };

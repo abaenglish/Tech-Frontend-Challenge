@@ -24,4 +24,10 @@ describe('ContentSection', () => {
 
         expect(arrow).toHaveLength(1);
     });
+
+    it('renders a list of tracks', () => {
+        const tracks = wrapper.find('#track');
+
+        expect(tracks).toHaveLength(1);
+    })
 });
