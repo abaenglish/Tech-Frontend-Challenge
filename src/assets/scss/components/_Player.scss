@@ -12,7 +12,7 @@
     svg {
         height: 25px;
         width: 25px;
-        color: #CECFDC;
+        color: $LightGray;
     }
 }
 
@@ -25,7 +25,7 @@
         width: 40px;
 
         svg {
-            color: $DarkPlum;
+            color: $DarkPurple;
         }
     }
 }
@@ -36,7 +36,7 @@
 
     hr {
         border-width: 0;
-        background-color: #CECFDC;
+        background-color: $LightGray;
         height: 4px;
         border-radius: 50px;
     }
@@ -45,7 +45,7 @@
 #player-actions {
     display: flex;
     justify-content: flex-end;
-    color: #CECFDC;
+    color: $LightGray;
 }
 
 // DESKTOP
