@@ -39,6 +39,5 @@ describe('App', () => {
         const player = wrapper.find(Player);
 
         expect(player).toHaveLength(1);
-    })
-
+    });
 });
