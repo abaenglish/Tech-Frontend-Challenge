@@ -62,6 +62,26 @@ const Spotify = {
                 cover: playlist.images[0]
             });
         });
+    },
+
+    async getCategories() {
+        let token = Spotify.getAccessToken();
+
+        const response = await fetch('https://api.spotify.com/v1/browse/categories', {
+            Authorization: `Bearer ${token}`
+        });
+        const jsonResponse = await response.json();
+
+        if(!jsonResponse) {
+            return [];
+        };
+
+        return jsonResponse.categories.items.map((category) => {
+            return ({
+                name: category.name,
+                cover: category.icons[0]
+            });
+        });
     }
 };
 

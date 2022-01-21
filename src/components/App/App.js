@@ -11,6 +11,7 @@ const App = () => {
         Spotify.getAccessToken();
         Spotify.getNewReleases();
         Spotify.getFeaturedPlaylists();
+        Spotify.getCategories();
     }, []);
 
     return (
