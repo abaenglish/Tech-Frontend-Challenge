@@ -1,7 +1,6 @@
-import config from '../config';
-
 let accessToken;
-let redirectURI = 'http://localhost:3000/callback/';
+let redirectURI = 'https://brave-jennings-901afb.netlify.app';
+let clientId = process.env.REACT_APP_CLIENT_ID;
 
 const Spotify = {
 
@@ -21,7 +20,7 @@ const Spotify = {
             return accessToken;
         }
 
-        window.location = `https://accounts.spotify.com/authorize?client_id=${config.api.clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
+        window.location = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
     },
 
     async getNewReleases() {
