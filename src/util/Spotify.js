@@ -40,7 +40,7 @@ const Spotify = {
 
         return jsonResponse.albums.items.map(album => ({
                 name: album.name,
-                cover: album.images[0] 
+                cover: album.images[0].url 
             }));
     },
 
@@ -61,7 +61,7 @@ const Spotify = {
         return jsonResponse.playlists.items.map((playlist) => {
             return ({
                 name: playlist.name,
-                cover: playlist.images[0]
+                cover: playlist.images[0].url
             });
         });
     },
@@ -83,7 +83,7 @@ const Spotify = {
         return jsonResponse.categories.items.map((category) => {
             return ({
                 name: category.name,
-                cover: category.icons[0]
+                cover: category.icons[0].url
             });
         });
     }
