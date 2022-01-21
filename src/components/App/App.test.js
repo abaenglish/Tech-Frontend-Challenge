@@ -4,6 +4,7 @@ import App from './App';
 import Navbar from '../Navbar/Navbar';
 import Header from '../Header/Header';
 import Content from '../Content/Content';
+import Player from '../Player/Player';
 
 describe('App', () => {
     
@@ -33,5 +34,11 @@ describe('App', () => {
 
         expect(content).toHaveLength(1);
     });
+
+    it('renders a player', () => {
+        const player = wrapper.find(Player);
+
+        expect(player).toHaveLength(1);
+    })
 
 });
