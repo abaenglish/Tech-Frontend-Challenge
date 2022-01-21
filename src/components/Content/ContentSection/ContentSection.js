@@ -1,16 +1,17 @@
 import React from 'react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { useSelector } from 'react-redux';
 
-const ContentSection = (props) => {
+const ContentSection = ({ title , type}) => {
 
-  const mockTracks = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13'];
+  let tracks = useSelector(state => state.content[type]);
 
   return (
     <section id='content-section-container'>
 
       <div id='top-container'>
-        <h3>{props.title.toUpperCase()}</h3>
+        <h3>{title.toUpperCase()}</h3>
         <hr />
         <div id='arrow-buttons'>
           <svg><ArrowBackIosIcon /></svg>
@@ -19,20 +20,20 @@ const ContentSection = (props) => {
       </div>
 
       <div id='bottom-container'>
-        {mockTracks.map((track) => {
-          if(mockTracks.indexOf(track) === mockTracks.length - 1) {
+        {tracks.map((track) => {
+          if(tracks.indexOf(track) === tracks.length - 1) {
             return (
-              <div className='last-track' key={track}>
-                <svg />
-                <p>Track {track}</p>
+              <div className='last-track' key={tracks.length -1}>
+                <img src={track.cover} alt='' />
+                <p>{track.name}</p>
               </div>
             )
           };
 
           return (
-            <div className='track' key={track}>
-              <svg />
-              <p>Track {track}</p>
+            <div className='track' key={tracks.indexOf(track)}>
+              <img src={track.cover} alt='' />
+              <p>{track.name}</p>
             </div>
           );
         })}

@@ -37,15 +37,15 @@ const contentSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(addReleases.fulfilled, (state, action) => {
-            state.newReleases.push(action.payload);
+            state.newReleases = action.payload;
         });
 
         builder.addCase(addPlaylists.fulfilled, (state, action) => {
-            state.featuredPlaylists.push(action.payload);
+            state.featuredPlaylists = action.payload;
         });
 
         builder.addCase(addCategories.fulfilled, (state, action) => {
-            state.categories.push(action.payload);
+            state.categories = action.payload;
         });
     }
 });
