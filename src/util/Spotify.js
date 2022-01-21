@@ -39,7 +39,27 @@ const Spotify = {
         return jsonResponse.albums.items.map((album) => {
             return ({
                 name: album.name,
-                cover: album.images[0],
+                cover: album.images[0]
+            });
+        });
+    },
+
+    async getFeaturedPlaylists() {
+        const token = Spotify.getAccessToken();
+
+        const response = await fetch('https://api.spotify.com/v1/browse/featured-playlists', {
+            Authorization: `Bearer ${token}`
+        });
+        const jsonResponse = await response.json();
+
+        if(!jsonResponse) {
+            return [];
+        };
+
+        return jsonResponse.albums.items.map((playlist) => {
+            return ({
+                name: playlist.name,
+                cover: playlist.images[0]
             });
         });
     }

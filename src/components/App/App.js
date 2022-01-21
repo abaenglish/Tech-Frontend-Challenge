@@ -10,6 +10,7 @@ const App = () => {
     useEffect(() => {
         Spotify.getAccessToken();
         Spotify.getNewReleases();
+        Spotify.getFeaturedPlaylists();
     }, []);
 
     return (
