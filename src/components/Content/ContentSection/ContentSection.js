@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useSelector } from 'react-redux';
@@ -6,6 +6,15 @@ import { useSelector } from 'react-redux';
 const ContentSection = ({ title , type}) => {
 
   let tracks = useSelector(state => state.content[type]);
+  const bottomContainer = useRef();
+
+  const clickHandler = (direction) => {
+    return () => {
+      const container = bottomContainer.current;
+      let scrollNumber = container.clientWidth;
+      direction === 'right'? container.scrollLeft += scrollNumber : container.scrollLeft -= scrollNumber;
+    };
+  };
 
   return (
     <section id='content-section-container'>
@@ -14,12 +23,12 @@ const ContentSection = ({ title , type}) => {
         <h3>{title.toUpperCase()}</h3>
         <hr />
         <div id='arrow-buttons'>
-          <svg><ArrowBackIosIcon /></svg>
-          <svg><ArrowForwardIosIcon /></svg>
+          <svg onClick={clickHandler('left')}><ArrowBackIosIcon /></svg>
+          <svg onClick={clickHandler('right')}><ArrowForwardIosIcon /></svg>
         </div>
       </div>
 
-      <div id='bottom-container'>
+      <div id='bottom-container' ref={bottomContainer}>
         {tracks.map((track) => {
           if(tracks.indexOf(track) === tracks.length - 1) {
             return (
