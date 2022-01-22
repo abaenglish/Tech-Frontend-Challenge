@@ -8,7 +8,6 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
 
 const Navbar = () => {
-    const iconSize = { fontSize: 18 };
 
     return (
         <nav>
@@ -18,11 +17,11 @@ const Navbar = () => {
             </div>
             <div id='nav-links'>
                 <ul>
-                    <li><HeadphonesIcon sx={iconSize} /><p>Discover</p></li>
-                    <li><SearchIcon sx={iconSize} /><p>Search</p></li>
-                    <li><FavoriteIcon sx={iconSize} /><p>Favourites</p></li>
-                    <li><PlayCircleIcon sx={iconSize} /><p>Playlists</p></li>
-                    <li><PlaylistPlayIcon sx={iconSize} /><p>Charts</p></li>
+                    <li><svg><HeadphonesIcon /></svg><p>Discover</p></li>
+                    <li><svg><SearchIcon /></svg><p>Search</p></li>
+                    <li><svg><FavoriteIcon /></svg><p>Favourites</p></li>
+                    <li><svg><PlayCircleIcon /></svg><p>Playlists</p></li>
+                    <li><svg><PlaylistPlayIcon /></svg><p>Charts</p></li>
                 </ul>
             </div>
         </nav>

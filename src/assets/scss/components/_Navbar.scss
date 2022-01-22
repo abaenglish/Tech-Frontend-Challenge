@@ -6,7 +6,7 @@ nav {
     display: flex;
     flex-direction: column;
     background-color: $DarkPurple;
-    color: white;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 #profile-picture {
@@ -17,34 +17,52 @@ nav {
     align-items: center;
     
     img {
-        width: 25px;
+        width: 20px;
     }
 
     p {
         display: none;
         margin: 12px 0 0 0;
+        color: white;
     }
 }
 
 #nav-links {
-    flex: 0.8;
+    flex: 0.85;
     display: flex;
     justify-content: center;
 
     ul {
-        padding-left: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     li {
-        margin-bottom: 45px;
+        padding: 22.5px 0;
         list-style: none;
         display: flex;
+        justify-content: center;
         align-items: center;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+            $leftColor: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(to right, $leftColor, transparent);
+            color: white;
+        }
+    }
+
+    svg {
+        width: 18px;
+        height: 18px;
     }
 
     p {
         display: none;
         margin: 0 0 0 13px;
+        font-weight: 500;
     }
 }
 
@@ -55,7 +73,6 @@ nav {
     #profile-picture {
         flex: 0.2;
         position: relative;
-        padding-bottom: 15px;
 
         img {
             width: 45px;
@@ -68,6 +85,11 @@ nav {
 
     #nav-links {
         flex: 0.8;
+
+        li {
+            justify-content: start;
+            padding-left: 15%;
+        }
 
         p {
             display: inline-block;
