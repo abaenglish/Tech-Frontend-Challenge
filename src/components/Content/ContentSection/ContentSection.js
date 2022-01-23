@@ -1,11 +1,15 @@
 import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
+//MUI ICONS
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { useSelector } from 'react-redux';
 
 const ContentSection = ({ title , type}) => {
 
-  let tracks = useSelector(state => state.content[type]);
+  let results = useSelector(state => state.content[type].results);
+  let promiseLoading = useSelector(state => state.content[type].isLoading);
+  let promiseRejected = useSelector(state => state.content[type].isRejected);
+
   const bottomContainer = useRef();
 
   const clickHandler = (direction) => {
@@ -29,23 +33,32 @@ const ContentSection = ({ title , type}) => {
       </div>
 
       <div id='bottom-container' ref={bottomContainer}>
-        {tracks.map((track) => {
-          if(tracks.indexOf(track) === tracks.length - 1) {
+
+        {/* PENDING */}
+        {promiseLoading && <div className='promise-container'><p>Loading...</p></div>}
+
+        {/* FULFILLED */}
+        {results.length > 0 && results.map((result) => {
+          if(results.indexOf(result) === results.length - 1) {
             return (
-              <div className='last-track' key={tracks.length -1}>
-                <img src={track.cover} alt='' />
-                <p>{track.name}</p>
+              <div className='last-result' key={results.length -1}>
+                <img src={result.cover} alt='' />
+                <p>{result.name}</p>
               </div>
             )
           };
 
           return (
-            <div className='track' key={tracks.indexOf(track)}>
-              <img src={track.cover} alt='' />
-              <p>{track.name}</p>
+            <div className='result' key={results.indexOf(result)}>
+              <img src={result.cover} alt='' />
+              <p>{result.name}</p>
             </div>
           );
         })}
+
+        {/* REJECTED */}
+        {promiseRejected && <div className='promise-container'><p>No results found</p></div>}
+
       </div>
 
     </section>

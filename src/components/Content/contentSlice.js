@@ -3,12 +3,24 @@ import Spotify from '../../util/Spotify';
 
 // INITIAL STATE
 const initialState = {
-    newReleases: [],
-    featuredPlaylists: [],
-    categories: []
+    newReleases: {
+        results: [],
+        isLoading: true,
+        isRejected: false
+    },
+    featuredPlaylists: {
+        results: [],
+        isLoading: true,
+        isRejected: false
+    },
+    categories: {
+        results: [],
+        isLoading: true,
+        isRejected: false
+    },
 };
 
-// MIDDLEWRE
+// MIDDLEWARE THUNKS
 export const addReleases = createAsyncThunk('content/addReleases',
     async () => {
         const response = await Spotify.getNewReleases();
@@ -36,16 +48,55 @@ const contentSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
+        // NEW RELEASES
+        builder.addCase(addReleases.pending, (state) => {
+            state.newReleases.isLoading = true;
+            state.newReleases.isRejected = false;
+        });
+
         builder.addCase(addReleases.fulfilled, (state, action) => {
-            state.newReleases = action.payload;
+            state.newReleases.isLoading = false;
+            state.newReleases.isRejected = false;
+            state.newReleases.results = action.payload;
+        });
+
+        builder.addCase(addReleases.rejected, (state) => {
+            state.newReleases.isLoading = false;
+            state.newReleases.isRejected = true;
+        });
+
+        // FEATURED PLAYLISTS
+        builder.addCase(addPlaylists.pending, (state) => {
+            state.featuredPlaylists.isLoading = true;
+            state.featuredPlaylists.isRejected = false;
         });
 
         builder.addCase(addPlaylists.fulfilled, (state, action) => {
-            state.featuredPlaylists = action.payload;
+            state.featuredPlaylists.isLoading = false;
+            state.featuredPlaylists.isRejected = false;
+            state.featuredPlaylists.results = action.payload;
+        });
+
+        builder.addCase(addPlaylists.rejected, (state) => {
+            state.featuredPlaylists.isLoading = false;
+            state.featuredPlaylists.isRejected = true;
+        });
+
+        // CATEGORIES
+        builder.addCase(addCategories.pending, (state) => {
+            state.categories.isLoading = true;
+            state.categories.isRejected = false;
         });
 
         builder.addCase(addCategories.fulfilled, (state, action) => {
-            state.categories = action.payload;
+            state.categories.isLoading = false;
+            state.categories.isRejected = false;
+            state.categories.results = action.payload;
+        });
+
+        builder.addCase(addCategories.rejected, (state) => {
+            state.categories.isLoading = false;
+            state.categories.isRejected = true;
         });
     }
 });
