@@ -1,5 +1,5 @@
 let accessToken;
-let redirectUri = 'http://localhost:3000/callback';
+let redirectUri = 'https://tech-frontend-challenge.netlify.app';
 let clientId = process.env.REACT_APP_CLIENT_ID;
 
 const Spotify = {
