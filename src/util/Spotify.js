@@ -1,30 +1,41 @@
+import queryString from 'query-string';
+
 let accessToken;
-let redirectURI = 'https://brave-jennings-901afb.netlify.app';
 let clientId = process.env.REACT_APP_CLIENT_ID;
+let clientSecret = process.env.REACT_APP_CLIENT_SECRET;
 
 const Spotify = {
 
-    getAccessToken() {
-        if(accessToken) {
+    async getAccessToken() {
+        if (accessToken) {
             return accessToken;
-        }
+        };
 
-        const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
-        const expirationTimeMatch = window.location.href.match(/expires_in=([^&]*)/);
+        const response = await fetch('https://accounts.spotify.com/api/token', {
+            method: 'POST',
+            body: queryString.stringify({
+                grant_type: 'client_credentials',
+            }),
+            headers: {
+                Authorization: 'Basic ' + Buffer.from(`${clientId}:${clientSecret}`).toString('base64'),
+                'Content-Type': 'application/x-www-form-urlencoded'	
+            }
+        });
 
-        if(accessTokenMatch && expirationTimeMatch) {
-            accessToken = accessTokenMatch[1];
-            const expiresIn = Number(expirationTimeMatch[1]);
-            window.setTimeout(() => accessToken='', expiresIn * 1000);
-            window.history.pushState('Access Token', null, '/');
+        try {
+            if (!response.ok) {
+                throw Error('Unsuccesful API request');
+            };
+            const jsonResponse = await response.json();
+            accessToken = jsonResponse.access_token;
             return accessToken;
-        }
-
-        window.location = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
+        } catch (error) {
+            console.error(error);
+        };
     },
 
     async getNewReleases() {
-        const token = Spotify.getAccessToken();
+        const token = await Spotify.getAccessToken();
 
         const response = await fetch('https://api.spotify.com/v1/browse/new-releases', {
             headers: {
@@ -33,18 +44,14 @@ const Spotify = {
         });
         const jsonResponse = await response.json();
 
-        if(!jsonResponse) {
-            return [];
-        };
-
         return jsonResponse.albums.items.map(album => ({
-                name: album.name,
-                cover: album.images[0].url 
-            }));
+            name: album.name,
+            cover: album.images[0].url 
+        }));
     },
 
     async getFeaturedPlaylists() {
-        const token = Spotify.getAccessToken();
+        const token = await Spotify.getAccessToken();
 
         const response = await fetch('https://api.spotify.com/v1/browse/featured-playlists', {
             headers: {
@@ -53,20 +60,14 @@ const Spotify = {
         });
         const jsonResponse = await response.json();
 
-        if(!jsonResponse) {
-            return [];
-        };
-
-        return jsonResponse.playlists.items.map((playlist) => {
-            return ({
-                name: playlist.name,
-                cover: playlist.images[0].url
-            });
-        });
+        return jsonResponse.playlists.items.map(playlist => ({
+            name: playlist.name,
+            cover: playlist.images[0].url
+        }));
     },
 
     async getCategories() {
-        let token = Spotify.getAccessToken();
+        let token = await Spotify.getAccessToken();
 
         const response = await fetch('https://api.spotify.com/v1/browse/categories', {
             headers: {
@@ -75,16 +76,10 @@ const Spotify = {
         });
         const jsonResponse = await response.json();
 
-        if(!jsonResponse) {
-            return [];
-        };
-
-        return jsonResponse.categories.items.map((category) => {
-            return ({
-                name: category.name,
-                cover: category.icons[0].url
-            });
-        });
+        return jsonResponse.categories.items.map((category) => ({
+            name: category.name,
+            cover: category.icons[0].url
+        }));
     }
 };
 

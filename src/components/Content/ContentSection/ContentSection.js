@@ -38,7 +38,7 @@ const ContentSection = ({ title , type}) => {
         {promiseLoading && <div className='promise-container'><p>Loading...</p></div>}
 
         {/* FULFILLED */}
-        {results.length > 0 && results.map((result) => {
+        {results && results.map((result) => {
           if(results.indexOf(result) === results.length - 1) {
             return (
               <div className='last-result' key={results.length -1}>
