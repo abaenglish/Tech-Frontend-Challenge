@@ -1,36 +1,25 @@
-import queryString from 'query-string';
-
 let accessToken;
+let redirectUri = 'http://localhost:3000/callback';
 let clientId = process.env.REACT_APP_CLIENT_ID;
-let clientSecret = process.env.REACT_APP_CLIENT_SECRET;
 
 const Spotify = {
 
     async getAccessToken() {
+        
         if (accessToken) {
             return accessToken;
         };
 
-        const response = await fetch('https://accounts.spotify.com/api/token', {
-            method: 'POST',
-            body: queryString.stringify({
-                grant_type: 'client_credentials',
-            }),
-            headers: {
-                Authorization: 'Basic ' + Buffer.from(`${clientId}:${clientSecret}`).toString('base64'),
-                'Content-Type': 'application/x-www-form-urlencoded'	
-            }
-        });
+        const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
 
-        try {
-            if (!response.ok) {
-                throw Error('Unsuccesful API request');
-            };
-            const jsonResponse = await response.json();
-            accessToken = jsonResponse.access_token;
+        if (!accessTokenMatch) {
+            // REDIRECTS TO REDIRECT URI AND RUNS METHOD AGAIN
+            window.location = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}`;
+        };
+
+        if (accessTokenMatch) {
+            accessToken = accessTokenMatch[1];
             return accessToken;
-        } catch (error) {
-            console.error(error);
         };
     },
 
